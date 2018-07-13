@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+
+<body>
+    <input type="file" id="btn-load">
+</body>
+
+</html>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="browser-md5-file.js"></script>
+<script type="text/javascript">
+    $('#btn-load').bind('change', function(e) {
+        console.log(e)
+        var file = e.target.files[0];
+        console.log(file)
+        browserMD5File(file, function(err, md5) {
+            console.log(md5); // 97027eb624f85892c69c4bcec8ab0f11
+        });
+    });
+</script>

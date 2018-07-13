@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        body {
+            width: 1000px;
+            height: 2000px;
+        }
+        
+        #div1 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: pink;
+            top: 20px;
+            left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+<script>
+    document.onmousemove = function(e) {
+        var oDiv = document.getElementById('div1');
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        console.log(scrollTop)
+        console.log(scrollLeft)
+        var oE = e || event;
+        oDiv.style.top = scrollTop - oDiv.offsetHeight / 2 + oE.clientY + 'px';
+        oDiv.style.left = scrollLeft - oDiv.offsetWidth / 2 + oE.clientX + 'px';
+    }
+</script>
+
+</html>
