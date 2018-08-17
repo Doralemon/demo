@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="10px" viewBox="0 0 18 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>上拉icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="2商品详情页-商品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-106.000000, -1228.000000)">
+        <g id="Group-7" transform="translate(0.000000, 1209.000000)" fill="#999999">
+            <g id="上拉icon" transform="translate(115.000000, 25.000000) rotate(90.000000) translate(-115.000000, -25.000000) translate(104.000000, 14.000000)">
+                <polygon id="Fill-6" points="7 11 15 19 14 20 6 12 5 11 14 2 15 3"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

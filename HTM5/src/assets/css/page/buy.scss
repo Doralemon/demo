@@ -1,0 +1,74 @@
+//=================疯抢首页start
+@import "../varable.scss";
+.buy{ padding-top:p2r(88) ;   min-height: 100%;background: #fff;}
+.buy .buyNav{background: #35383D;height: p2r(120);margin-bottom: p2r(42);}
+.buy .buyNav >div{position: absolute;height: p2r(120);}
+.buy .buyNav >div:first-child{z-index: 1;width: 100%;}
+.buy .buyNav >div:first-child >div{width: 50%;color: #fff;padding-bottom:p2r(16);padding-top:p2r(16) ;float: left;text-align: center; }
+.buy .buyNav >div:last-child{transition:0.1s;left:0;width:50%;z-index: 0;position: relative;background: #FF5656;}
+.buy .buyNav >div:last-child >div{position: absolute;bottom: p2r(-12);border-left:p2r(12) solid transparent;border-top: p2r(12) solid #ff5656;border-right: p2r(12) solid transparent;width: 0;height: 0;left: calc(50% + #{p2r(-6)});}
+.buy .buyNav p:first-child{font-size: 17px;margin-bottom: p2r(4);}
+.buy .buyNav p:last-child{font-size: 13px;}
+.buy .list{padding: 0 p2r(30);margin-bottom: p2r(30);}
+.buy li >div{float:left;height: p2r(300);}
+.buy li >div:first-child{width:p2r(300);overflow: hidden;margin-right: p2r(20);}
+.buy img{height: 100%;}
+.buy li >div:last-child{width:calc(100% + #{p2r(-320)});height: p2r(300);}
+.buy .content > p{font-size: p2r(28);color: #444444;line-height: p2r(40);display: block;height: p2r(80);overflow: hidden;text-overflow: ellipsis;margin-bottom: p2r(24);}
+.buy .price{overflow: hidden;margin-bottom: p2r(42);}
+.buy .price >div{overflow: hidden;float: left;width: 50%;}
+.buy .newPrice >p:first-child{font-size: p2r(40);    color: #FF4949;letter-spacing: p2r(-0.96);line-height: p2r(56);margin-bottom: p2r(6);}
+.buy .newPrice >p:last-child{color: #FF5656;font-size: p2r(22);line-height: p2r(32);}
+.buy .newPrice >p:last-child >span{color: #666;}
+
+.buy .oldPrice >p:first-child{margin-top:p2r(10);font-size: p2r(30);color: #C4C4C4;line-height: p2r(42);margin-bottom: p2r(10);}
+.buy .oldPrice >p:last-child{font-size: p2r(22);line-height: p2r(32);color: #C4C4C4;}
+.buy .sub{width: p2r(228);height: p2r(60);background:#FF5656 ;line-height: p2r(60);font-size:p2r(26) ;color: #fff;text-align: center;border-radius:p2r(100);}
+.buy .active{left: 50%!important;}
+
+//=================疯抢首页end=============================
+.buyDetail .photo{
+    width:p2r(750);
+    height: p2r(750);
+    position: relative;
+    overflow: hidden;
+    img{
+        width: 100%;
+    }
+    div{
+        position: absolute;
+        background: #FFFFFF;
+        border: 1px solid #D8D8D8;
+        bottom: p2r(30);
+        right: p2r(30);
+        padding:0 p2r(25);
+        text-align: center;
+        line-height: p2r(38);
+        font-size: 12px;
+        color: #666;
+    }
+}
+.buyDetail{
+  .priceContent{width: 100%;overflow: hidden; }
+  .priceContent >div{float: left;height: p2r(140);box-sizing: border-box;overflow: hidden;} 
+  .price{text-align: left;width:p2r(480) ; background: #FF5656;padding: p2r(20) p2r(30);}
+  .time{width: calc(100% - #{p2r(480)});background: #FFDCDC;padding: p2r(20) p2r(16);}
+  .price >div{overflow: hidden;}
+  .newPrice >span{display: block;float: left;}
+  .newPrice >span:first-child{font-size: 20px;color: #FFFFFF;line-height: p2r(56);margin-right: p2r(16);}
+  .newPrice >span:nth-child(2){font-size:13px;color: #FFFFFF;line-height: p2r(56);margin-right: p2r(16);}
+  .newPrice>span:last-child{font-size:11px;background: #fff;border-radius: 4px;padding: 0 5px;margin-top:p2r(14);}
+  .newPrice{margin-bottom: p2r(8);}
+   .oldPrice >span{color: #fff;font-size: 13px;}
+   .oldPrice >span:first-child{margin-right: p2r(58);}
+   .time >div:first-child{text-align:center;font-size: 13px;color: #FF5656;margin-bottom: p2r(16);}
+   .time >div:last-child span{background: #FF5656;border-radius: 2px;text-align:center;font-size:13px;width:p2r(40) ;height: p2r(48);line-height:p2r(48);display: inline-block;color: #fff;}
+   .time >div:last-child i{color: #FF5656;}
+    .time >div:last-child{text-align: center;}
+    .title{padding: p2r(30);background: #fff;}
+    .title >p{font-size: 16px;color: #333333;text-align:justify;line-height: p2r(60);}
+    .sub {position: fixed;bottom: 0;width: 100%;background: #fff;padding:p2r(16) p2r(30);}    
+    .sub >div{line-height:p2r(80);background: #AAAAAA;border-radius: p2r(58);color: #fff;font-size: 15px;color: #FFFFFF;letter-spacing: -0.36px;}
+} 
+
+

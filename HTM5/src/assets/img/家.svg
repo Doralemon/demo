@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="18px" viewBox="0 0 42 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>家</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="10收货地址-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-197.000000, -175.000000)">
+        <g id="Group-Copy" transform="translate(0.000000, 158.000000)">
+            <g id="家" transform="translate(197.000000, 17.000000)">
+                <rect id="Rectangle-2" stroke="#FF5656" x="0.5" y="0.5" width="41" height="17" rx="8.5"></rect>
+                <text font-family="PingFangSC-Regular, PingFang SC" font-size="11" font-weight="normal" fill="#FF5656">
+                    <tspan x="15.5" y="13">家</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

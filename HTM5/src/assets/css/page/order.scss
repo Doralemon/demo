@@ -1,0 +1,28 @@
+@import "../varable.scss";
+body{
+    background-color: #f5f5f5!important;
+}
+.allOrder{
+    padding-top:p2r(88) ;
+    .mint-tab-item-label{
+        color:#888888 ;
+        font-size: 15px;
+        letter-spacing: -0.36px;
+    }
+    .mint-navbar .mint-tab-item.is-selected{
+        position: relative;
+        border:none;
+        .mint-tab-item-label{
+            color: #FF5656;
+            font-size: 15px;
+        }
+        .line{position: absolute;bottom: p2r(4);width: p2r(70);background: #FF5656 ;height: p2r(4);left: calc(50% - #{p2r(35)});}
+        }
+    .mint-navbar .mint-tab-item {
+        padding: p2r(18) 0 p2r(20) 0;
+        font-size: 15px;
+    }
+    .mint-cell-wrapper,.nav{
+        padding: 0 p2r(30);
+    }
+}

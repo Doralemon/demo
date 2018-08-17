@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="24px" viewBox="0 0 60 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>优惠券bg</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="2商品详情页-商品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-60.000000, -661.000000)">
+        <g id="Group-7-Copy" transform="translate(0.000000, 647.000000)" fill="#FF4949">
+            <g id="优惠券" transform="translate(60.000000, 14.500000)">
+                <path d="M60,23 L0,23 L2.06896552,19.1666667 L0,15.3333333 L2.06896552,11.5 L0,7.66666667 L0,3.83333333 L0,0 L2.06896552,3.83333333 L0,7.66666667 L0,3.83333333 L0,0 L60,0 L60,3.83333333 L60,0 L57.9310345,3.83333333 L60,7.66666667 L60,3.83333333 L60,7.66666667 L57.9310345,11.5 L60,15.3333333 L57.9310345,19.1666667 L60,23 Z" id="优惠券bg"></path>
+            </g>
+        </g>
+    </g>
+</svg>

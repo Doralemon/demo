@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="73px" height="22px" viewBox="0 0 73 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>收起按钮</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="29订单详情--已取消（已支付" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-151.000000, -851.000000)">
+        <g id="Group-9" transform="translate(0.000000, 571.000000)">
+            <g id="收起按钮" transform="translate(151.000000, 280.000000)">
+                <rect id="Rectangle-4" stroke="#666666" x="0.5" y="0.5" width="72" height="21" rx="10.5"></rect>
+                <text id="收起" font-family="PingFangSC-Regular, PingFang SC" font-size="13" font-weight="normal" fill="#666666">
+                    <tspan x="15" y="16">收起</tspan>
+                </text>
+                <g id="Group-10" transform="translate(50.000000, 9.000000)" fill="#666666" stroke="#666666" stroke-width="0.4">
+                    <polygon id="Page-1" transform="translate(4.000000, 2.577742) rotate(-90.000000) translate(-4.000000, -2.577742) " points="2.37016015 -1 2 -0.629839854 5.24386783 2.61281168 2.09041151 5.77153862 2.47435638 6.15548348 5.62943442 3.00040543 6 2.62943442"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

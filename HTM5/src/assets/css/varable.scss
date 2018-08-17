@@ -1,0 +1,10 @@
+@function p2r($px){
+    @return ($px/100)*1rem
+  };
+@mixin size($width, $height) {
+width: p2r($width);
+height: p2r($height);
+};
+$commongary:#F5F5F5;
+$Ored: #FF4949;
+$Oblue: #1478C8;
