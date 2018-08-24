@@ -9,49 +9,47 @@ import Order from '../views/singleOrder.vue'
 import Address from '../views/Address.vue'
 import AddAddress from '../views/AddAddress.vue'
 import OnlinePay from '../views/onlinePay.vue'
+import CouponCode from '../views/CouponCode.vue'
+import Cart from '../views/Cart.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path:'/',
-      redirect:"/preference"
-    },
-    {
-      path: '/preference',
+      path: '/',
       name:'Preference',
       component: Preference,
       meta:{
         title:'列表',
         index:1
       },
-      children:[{
-        path: ':id',
-        name:'PreferenceInfo',
-        component: PreferenceInfo 
-      }] 
+      // children:[{
+      //   path: ':id',
+      //   name:'PreferenceInfo',
+      //   component: PreferenceInfo 
+      // }] 
     },
-    {
-      path: '/preference/:id/:goodsId',
-      name:'GoodsInfo',
-      redirect: {name: 'Goods'},
-      component: GoodsInfo,
-      meta:{
-        title:'详情',
-        index:2
-      },
-      children:[{
-        path: 'goods',
-        name:'Goods',
-        component: GoodsInfoProduct 
-      },
-      {
-        path: 'goodsInfo',
-        name:'GoodsImg',
-        component: GoodsInfoImg 
-      }]
-   },
+  //   {
+  //     path: '/:id/:goodsId',
+  //     name:'GoodsInfo',
+  //     redirect: {name: 'Goods'},
+  //     component: GoodsInfo,
+  //     meta:{
+  //       title:'详情',
+  //       index:2
+  //     },
+  //     children:[{
+  //       path: 'goods',
+  //       name:'Goods',
+  //       component: GoodsInfoProduct 
+  //     },
+  //     {
+  //       path: 'goodsInfo',
+  //       name:'GoodsImg',
+  //       component: GoodsInfoImg 
+  //     }]
+  //  },
    {
     path: '/order',
     name:'Order',
@@ -67,7 +65,7 @@ export default new Router({
     component: Address,
     meta:{
       title:'收获地址',
-      index:3
+      index:2
     }
    },
    {
@@ -76,7 +74,7 @@ export default new Router({
     component: AddAddress,
     meta:{
       title:'新增/编辑地址',
-      index:4
+      index:3
     }
    },
    {
@@ -85,6 +83,15 @@ export default new Router({
     component: OnlinePay,
     meta:{
       title:'在线支付',
+      index:4
+    }
+   },
+   {
+    path: '/cart',
+    name:'Cart',
+    component: Cart,
+    meta:{
+      title:'购物车',
       index:5
     }
    },

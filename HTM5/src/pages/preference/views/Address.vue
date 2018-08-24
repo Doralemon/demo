@@ -1,6 +1,6 @@
 <template>
         <div class="address common-bg">
-           <header></header>
+           <Head :titleName="title"></Head>
            <!-- <div class="address-null">
                <div class="img-box"></div>
                <p class="tc">还没有添加收货地址呢~</p>
@@ -28,9 +28,11 @@
 </template>
 <script>
     import { Toast } from 'mint-ui';
+    import Head from '../../../components/head.vue'
     export default {
         data(){
             return{ 
+                title:'收货地址',
                 right:[
           {
             content: '<div class="delete"></div>',
@@ -68,7 +70,7 @@
            }
         },
         components:{
-            
+           Head 
         }
     }
 </script>

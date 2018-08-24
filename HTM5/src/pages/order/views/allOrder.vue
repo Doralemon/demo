@@ -9,23 +9,23 @@
 			  <mt-tab-item id="tab-container4">待评价<div class="line"></div></mt-tab-item>
 			</mt-navbar>
 		</div>
-		<div style="margin-top:3px;">
+		div >
 			<mt-tab-container swipeable v-model="active">
 				
 			  <mt-tab-container-item id="tab-container1">
-			    <mt-cell v-for="n in 3" title="tab-container 1">
-			    	
-			    	{{'con'+n}}
-			    </mt-cell>
+			  	
+			  	<orderNone></orderNone>
 			  </mt-tab-container-item>
 			  <mt-tab-container-item id="tab-container2">
-			    <mt-cell v-for="n in 5" title="tab-container 2">{{'twn'+n}}</mt-cell>
+			    <router-link :to="{name:'orderDetail'}">
+			    	<orderItem></orderItem>
+			    </router-link>
 			  </mt-tab-container-item>
 			  <mt-tab-container-item id="tab-container3">
-			    <mt-cell v-for="n in 7" title="tab-container 3">{{'three'+n}}</mt-cell>
+			    <orderItem></orderItem>
 			  </mt-tab-container-item>
 			  <mt-tab-container-item id="tab-container4">
-			    <mt-cell v-for="n in 7" title="tab-container 3">{{'three'+n}}</mt-cell>
+			    <orderItem></orderItem>
 			  </mt-tab-container-item>
 			</mt-tab-container>	
 		</div>
@@ -36,8 +36,9 @@
 <script>
 	import Vue from "vue"
 	import heads from "../../../components/head.vue"
+	import orderItem from "../../../components/orderNumber.vue"
 	import { TabContainer, TabContainerItem ,TabItem} from 'mint-ui'
-
+	import orderNone from "../../../components/orderNone.vue"
 	Vue.component(TabContainer.name, TabContainer)
 	Vue.component( TabContainerItem.name, TabContainerItem)
 	Vue.component(TabItem.name, TabItem)
@@ -49,7 +50,9 @@
 			}
 		},
 		components:{
-			heads
+			heads,
+			orderItem,
+			orderNone
 //			"mt-tab-container":TabContainer,
 //			"mt-tab-container-item":TabContainerItem
 		}

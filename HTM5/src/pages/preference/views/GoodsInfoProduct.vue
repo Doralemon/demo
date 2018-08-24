@@ -2,20 +2,20 @@
         <div class="app preference-goods-info-product">
             <div class="preference-goods-info-img">
                  <!-- 顶部轮播图 -->
-                <mt-swipe :auto="4000">
-                    <mt-swipe-item>
-                        <img preview="1" src="../../../assets/logo.png" alt="商品图片">
-                        <div class="item-num tc">1/5</div>
+                <mt-swipe :auto="4000" v-if="this.productImage" >
+                    <mt-swipe-item v-for="(item,index) in this.productImage" :key='index'>
+                        <img :preview="index" :src="item" alt="商品图片">
+                        <div class="item-num tc">{{index+1}}/{{this.productImage.length}}</div>
                     </mt-swipe-item>
                 </mt-swipe>
             </div>
             <div class="preference-goods-info-product-article">
                  <!-- 文字描述 -->
                 <div class="goods-info-des">
-                    <p class="two2ell goodsInfo-title">&nbsp;【鲜果上市】 陕西黑布林大李子 5斤大果 水润香甜 口感细腻</p>
+                    <p class="two2ell goodsInfo-title">&nbsp;{{this.goodsDesObj.product.productName}}</p>
                     <div class="Gray-666 goodsInfo-price clearfix">
                         <div class="fl">
-                            <span class="price">&yen;29.8</span> /箱&nbsp;&nbsp;&nbsp;<span class="news-goods">新品</span>
+                            <span class="price">&yen;{{this.goodsDesObj.product.originalPrice}}</span> /{{this.goodsDesObj.product.unit}}&nbsp;&nbsp;&nbsp;<span class="news-goods">新品</span>
                         </div>
                         <div class="fr">
                             <el-rate
@@ -34,7 +34,7 @@
                     </p>
                 </div>
                 <!-- 领券 -->
-                <div class="lingquan clearfix" @click="lingquan">
+                <div class="lingquan clearfix" @click="lingquan" v-if="this.goodsDesObj.hasCourtesy">
                     <div class="fl">
                         <span class="span-title">领券</span>
                         <span class="tc">优惠券</span>
@@ -67,11 +67,11 @@
                      <!-- 评价 -->
                     <bigComment></bigComment>
                     <!-- 图文详情 -->
-                    <div class="img-info">
-                        <p class="iconfont icon-shanglaicon tc" @click='goImg'>上拉查看图文详情</p>
+                    <div class="img-info" @touchmove='goImg'>
+                        <p class="iconfont icon-shanglaicon tc">上拉查看图文详情</p>
                     </div>
                 </div>
-                <p class="tc goods-provide Gray-666">本商品是由深圳菠萝蜜供应链管理有限公司提供</p>
+                <p class="tc goods-provide Gray-666">本商品是由{{this.goodsDesObj.product.enterpriseName}}提供</p>
             </div>
             <!-- 领券弹框 -->
             <mt-popup
@@ -85,8 +85,7 @@
                 <div class="lingquanBox-container">
                     <ul>
                         <li class="quan-item">
-                            <div class="quan-item-box">
-                                <div class="lingquan-status yilingqu tc">已领取</div>
+                             <div class="lingquan-status yilingqu tc">已领取</div>
                                 <div class="lingquanBox-container-top font-15">黑手星巴克优惠券</div>
                                 <div class="lingquanBox-container-center clearfix">
                                     <div class="fl">
@@ -97,12 +96,10 @@
                                         <p class="delay-date">有效期：2018-08-05至2018-09-20</p>
                                     </div>
                                 </div>
-                                <div class="lingquanBox-container-bottom">仅限于星巴克星巴克星巴克星巴克星巴克星巴克使用</div>
-                            </div>
+                            <div class="lingquanBox-container-bottom">仅限于星巴克星巴克星巴克星巴克星巴克星巴克使用</div>
                         </li>
                         <li class="quan-item">
-                            <div class="quan-item-box">
-                                <div class="lingquan-status weilingqu tc">未领取</div>
+                             <div class="lingquan-status weilingqu tc">未领取</div>
                                 <div class="lingquanBox-container-top font-15">黑手星巴克优惠券</div>
                                 <div class="lingquanBox-container-center clearfix">
                                     <div class="fl">
@@ -113,8 +110,7 @@
                                         <p class="delay-date">有效期：2018-08-05至2018-09-20</p>
                                     </div>
                                 </div>
-                                <div class="lingquanBox-container-bottom">仅限于星巴克星巴克星巴克星巴克星巴克星巴克使用</div>
-                            </div>
+                            <div class="lingquanBox-container-bottom">仅限于星巴克星巴克星巴克星巴克星巴克星巴克使用</div>
                         </li>
                     </ul>
                 </div>
@@ -122,20 +118,31 @@
         </div>
 </template>
 <script>
-    import bigComment from '../../../components/bigComment.vue'
+import bigComment from '../../../components/bigComment.vue';
+import { queryProductDes }  from '../../../assets/js/api.js';
     export default {
         data(){
             return{
-            isToCart:false,
-            isTobuy:false,  
-            popupVisible:false,
-            value5:3.6  //评分
+                isToCart:false,
+                isTobuy:false,  
+                popupVisible:false,
+                value5:3.6,  //评分
+                productImage:[],
+                goodsDesObj:{},
+                token:"",
+                productId:"",
             }
         },
         beforeCreate () {
                 
         },
         created () { 
+            console.log(888)
+            this.token = localStorage.getItem('token');
+            this.productId = this.$route.params.goodsId;
+            this.getGoodsInfoProduct();
+        },
+        activated(){   
             
         },
         mounted(){
@@ -150,8 +157,29 @@
             },
             beClose(){ //关闭领券弹框
                 this.popupVisible = false;
-            }
+            },
+            getGoodsInfoProduct(){ //获取商品详情信息
+                queryProductDes(
+                    {params:{token:this.token,
+                        productId:this.productId
+                    } 
+                 }
+                ).then(Response=>{
+                    switch(Response.code){
+                        case '000':
+                        this.goodsDesObj = Response.data;
+                        if(this.goodsDesObj.product.productImage.length>1){
+                            this.productImage =this.goodsDesObj.product.productImage.split(',');
+                        }else{
+                            this.productImage =this.goodsDesObj.product.productImage;
+                        }
+                        console.log( this.goodsDesObj)
+                        break;
+                    }
+                })
+            },
         },
+        props:[],
         components:{
             bigComment
         }
@@ -298,7 +326,6 @@
         }
         .lingquanBox-container{
             position: relative;
-            padding:p2r(30);
             margin-bottom: p2r(164);
             max-height: p2r(892);
             overflow: auto;
@@ -306,17 +333,12 @@
                 .quan-item{
                     position: relative;
                     height: p2r(324);
-                    margin-top:p2r(30); 
+                    margin:p2r(24); 
                     background-image: url("../../../assets/img/优惠券bg2.svg");
                     background-position: center center;
                     background-repeat: no-repeat;
-                    background-size: p2r(702) p2r(324);
-                    &:first-child{
-                            margin-top:0;
-                        }
-                    .quan-item-box{
-                        padding:p2r(30) p2r(30) p2r(24) p2r(30);
-                    }   
+                    background-size: p2r(704) p2r(324);
+                    padding:p2r(30) p2r(30) p2r(24) p2r(30);
                 }
             }
             .lingquan-status{
@@ -374,12 +396,12 @@
                     }
                 }
             }
-             .lingquanBox-container-bottom{
-                    position: absolute;
-                    bottom: p2r(24);
-                    font-size: 12px;
-                    color: #666666;
-                }
+            .lingquanBox-container-bottom{
+                position: absolute;
+                bottom: p2r(24);
+                font-size: 12px;
+                color: #666666;
+            }
         }
     }
 </style>

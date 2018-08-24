@@ -1,0 +1,34 @@
+@import "../varable.scss";
+    
+.mint-button--primary {
+    border-radius: 0;
+        width: 100%;
+}
+body .mint-msgbox{
+    height: p2r(520)!important;
+}
+
+.mint-msgbox-header {
+    padding-top: p2r(50) 0 0;
+}
+body .mint-msgbox .mint-msgbox-header{display: block;}
+body .mint-msgbox .mint-msgbox-content{padding: p2r(40) p2r(50);text-align: justify;}
+.mint-msgbox-message{line-height: p2r(42);}
+
+.beforePay{
+    background: #fff;
+    min-height: 100%;
+    .wait{margin-bottom:p2r(32);font-size: p2r(140);color:#1478C8;line-height: p2r(140);text-align: center;margin-top: p2r(60);}
+    .title{color:#333333;text-align: center;font-size: p2r(34);margin-bottom: p2r(10);}
+    .look{text-align: center;font-size: 13px;color:#1478C8;margin-bottom: p2r(16);}
+    .price{text-align: center;margin-bottom: p2r(60);}
+    .price >span{vertical-align: top;}
+    .price >span:first-child{font-size: 20px;color: #555555;margin-top: 5px;display: inline-block;}
+    .price >span:last-child{font-size: 40px;color: #000000;letter-spacing: 0.09px;line-height: 48px;}
+    .content{border-bottom:1px solid #f1f1f1 ;border-top:1px solid #f1f1f1;padding: p2r(40) p2r(30);margin-bottom: p2r(90);}
+    .content >div{margin-bottom: p2r(32);}
+    .content >div:last-child{margin-bottom: 0;}
+    .content >div >span:first-child{width:p2r(176);display: inline-block;color: #666666;}
+    .content >div >span:last-child{display: inline-block;width:calc(100% - #{p2r(190)}) ;color: #333333;font-size: 15px;}
+ .paybtn{    padding: 0 15px;}
+}

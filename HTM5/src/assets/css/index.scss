@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import './varable.scss';
+@import './page/onlinePay.scss';
 html,body{
     height: 100%;
     width:100%;
@@ -9,7 +10,6 @@ body{
     background-color: #fff;
     color:#333;
     font-size: 14px;
-    max-width: 640px;
     min-width: 320px;
     margin:0 auto !important;
     .app{
@@ -161,10 +161,10 @@ body{
         font-weight: 700;
     }
      .show{
-         opacity: 1;
+         display: block;
      }
      .hide{
-         opacity: 0;
+         display: none;
      }
     //  toast
     .mint-toast{
@@ -180,6 +180,17 @@ body{
         font-size: 15px;
         color: #000000;
         letter-spacing: -0.36px;
+    }
+    .address,.add-address-center{
+          // input框
+        input{
+            font-size: 15px;
+            color: #666666;
+        }
+        input::-webkit-input-placeholder {
+            font-size: 15px;
+            color: #C4C4C4;
+        }
     }
     // 收货地址
     .address{
@@ -266,15 +277,6 @@ body{
             color: #FFFFFF;
         }
     }
-    // input框
-    input{
-        font-size: 15px;
-        color: #666666;
-    }
-    input::-webkit-input-placeholder {
-        font-size: 15px;
-        color: #C4C4C4;
-    }
     // 默认地址
     .morendizhi{
         .mint-cell-wrapper{
@@ -305,6 +307,9 @@ body{
              }
         }
     }
+}
+.mint-tab-container{
+    overflow:visible;
 }
 @media (min-width: 768px) { 
     .visible-sm-block{

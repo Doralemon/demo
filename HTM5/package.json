@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "set type=dev&&webpack-dev-server --progress --open --host 192.168.0.134 --config webpack.dev.config.js",
+    "dev": "set type=dev&&webpack-dev-server --progress --open --host 192.168.0.129 --config webpack.dev.config.js",
     "build": "set type=build&&webpack --progress --config webpack.pro.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

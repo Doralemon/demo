@@ -127,6 +127,8 @@ module.exports = {
           
         new htmlWebpackPlugin(htmlPlugin('preference')),
         new htmlWebpackPlugin(htmlPlugin('park')),
+        new htmlWebpackPlugin(htmlPlugin('mycart')),
+        new htmlWebpackPlugin(htmlPlugin('order')),
 
     ],
 

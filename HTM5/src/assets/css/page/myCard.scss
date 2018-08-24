@@ -1,0 +1,162 @@
+@import '../varable.scss';
+.mycard-common{
+    .quan-item-box{
+        position: relative;
+        background: #fff;
+        box-shadow: 0 1px 4px 0 rgba(165,165,165,0.50);
+        border-radius: 3px;
+        height: p2r(324);
+        margin:p2r(24); 
+        padding:p2r(30) p2r(30) p2r(24) p2r(30);
+        &.addHeight{
+            height: p2r(358);
+            transition: 0.2s;
+        }
+        }
+        .lingquanBox-container-top{
+            font-weight: 700;
+        }
+        .lingquanBox-container-center{
+            padding-top:p2r(24);
+            img{
+                display: block;
+                @include size(120,120);
+                margin-right: p2r(30);
+            }
+            .quan-info{
+                .quan-info-box{
+                    position: relative;
+                    vertical-align: bottom;
+                }
+                p{
+                    font-size: 12px;
+                    color: #666666;
+                   
+                }
+                 .quan-info-left{
+                     span:first-child{
+                        position:absolute;
+                        left:0;
+                        top:2px;
+                        font-size: 15px;
+                        color: $Ored;
+                        letter-spacing: 0;
+                        line-height: 15px;
+                    }  
+                 }
+                  .zhekou{
+                        position: relative;
+                        width:p2r(90);
+                        font-size: 30px;
+                        color: $Ored;
+                        line-height: 30px;
+                        margin-right: p2r(20);
+                        span{
+                            padding:0;
+                        }
+                        span.price{
+                            position: absolute;
+                            top:0;
+                            right: 0;
+                            font-size: 15px;
+                            color: $Ored;
+                            letter-spacing: 0;
+                            line-height: 15px;
+                        }
+                    }
+                .price{
+                    font-size: 30px;
+                    color: $Ored;
+                    letter-spacing: 0;
+                    line-height: 30px;
+                    padding-right: p2r(20);
+                    padding-left:p2r(25);
+                }
+                .delay-date{
+                    padding-top:p2r(26);
+                }
+            }
+        }
+        .line{
+            position: absolute;
+            top:p2r(240);
+            left:0;
+            right:0;
+            width: 100%;
+            height: 1px;
+            background-image: linear-gradient(to right, #e8e8e8 0%, #e8e8e8  50%, transparent 50%);
+            background-size: 8px 1px;
+            background-repeat: repeat-x;
+            &::before,&::after{
+                content:"";
+                position: absolute;
+                @include size(42,42);
+                border-radius: 50%;
+                border-left:0;
+                background-color: #F5F5F5;
+                top:p2r(-21);
+                z-index: 3;
+            }
+            &::before{
+                left:p2r(-21);
+            }
+            &::after{
+                right:p2r(-21);
+            }
+        }
+        .lingquanBox-container-bottom{
+            position: absolute;
+            top: p2r(270);
+            p{
+                width:p2r(580);
+                height: p2r(34);
+                font-size: 12px;
+                color: #666666;
+                word-wrap: break-word;
+                overflow: hidden;
+                &.addHeight{
+                    height: p2r(68);
+                }
+            }
+            &::before{
+                font-size: 12px;
+                color:#C3C3C3;
+                position: absolute;
+                top:3px;
+                right:p2r(-40-21);
+            }
+        }
+    .nomore{
+        	margin-top:p2r(40);
+   		 }
+    .seeHistory{
+        margin-top:p2r(48);
+        margin-bottom: p2r(148);
+    }
+}
+.main-cover{
+    padding-top:p2r(88);
+    .quan-item-box{
+        &::after{
+            content: '';
+            position: absolute;
+            background-color: #fff;
+            top:0;
+            left:0;
+            right:0;
+            width:100%;
+            height: 100%;
+            opacity: 0.8; 
+        }
+        &::before{
+            content: '';
+            @include size(144,144);
+            position: absolute;
+            top:p2r(20);
+            right:p2r(20);
+            background: url("../../img/已过期icon.svg") no-repeat center center;
+            background-size: p2r(124) p2r(124);
+            z-index: 99;
+        }
+    }  
+}

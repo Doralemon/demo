@@ -1,7 +1,45 @@
 @import '../varable.scss';
 .onlinePay-center{
+    a{
+        padding-left:p2r(30);
+        padding-right:p2r(30);
+    }
     .mint-cell-wrapper{
         background-size: 0;
         padding:0;
+    }
+    label{
+        padding:0;
+    }
+    .mint-radiolist{
+        .mint-radiolist-title{
+            margin:0;
+            margin-left:p2r(30);
+            height: p2r(76);
+            font-size: 15px;
+            line-height: p2r(76);
+            color: #888888;
+        }
+        .mint-cell{
+            padding-left:p2r(30);
+            padding-right:p2r(30);
+        }
+        .mint-radio-core{
+            width:p2r(40);
+            height: p2r(40);
+        }
+    }
+    span{
+        margin:0;
+    }
+    .payPrice .mint-cell-value{
+        color: $Ored;
+    }
+    .mint-radio-input:checked + .mint-radio-core{
+        background: #FFFFFF url("../img/选中.svg") no-repeat center center;
+        background-size: p2r(40) p2r(40);
+    }
+    .mint-radio-core::after{
+        display: none;
     }
 }  

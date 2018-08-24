@@ -125,6 +125,8 @@ module.exports = {
         //需要打包的页面 
         new htmlWebpackPlugin(htmlPlugin(ENHTML[0])),
         new htmlWebpackPlugin(htmlPlugin(ENHTML[1])),
+        new htmlWebpackPlugin(htmlPlugin(ENHTML[2])),
+        new htmlWebpackPlugin(htmlPlugin(ENHTML[3])),
 
     ],
     devServer: {
@@ -143,10 +145,15 @@ module.exports = {
         inline: true,
         proxy: {
             '/': {
-                target: 'https://120.24.250.211:8443/',
+                target: 'https://120.24.250.211:8443',
                 secure: false, // 接受 运行在 https 上的服务
                 changeOrigin: true
-            }
+            },
+            // '/api': {
+            //     target: 'https://test.ql-msx.com:4089/api',
+            //     secure: false, // 接受 运行在 https 上的服务
+            //     changeOrigin: true
+            // },
         }
     }
 }

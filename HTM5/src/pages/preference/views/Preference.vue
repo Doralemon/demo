@@ -3,13 +3,12 @@
         <!-- 头部 -->
         <header>
             <div class="goBack iconfont icon-fanhuiicon">
-
             </div>
             <div class="title">
                 卓越优选
             </div>
-            <div class="cart">
-                <el-badge :value="9" :max="99" class="item">
+            <div class="cart" @click="goCart">
+                <el-badge :value="cartNum" :max="99" class="item">
                     <div class="iconfont icon-gouwucheicon"></div>
                 </el-badge>
             </div>
@@ -17,77 +16,96 @@
        <!-- 底部 -->
        <div class="o-pre-bottom">
             <!-- 左边侧边栏 -->
-            <aside class="wrapper1">
-                <ul class="o-goodsList content" v-if="this.asideList.length">            
+            <aside class="">
+                <ul class="o-goodsList" v-if="this.asideList.length">  
                     <li v-for='(item,index) in asideList' :key='index'>
-                        <router-link :to="{ name: 'PreferenceInfo', params: { id: item.id }}">{{item.name}}</router-link>
-                    </li>    
+                        <a :class="{active:selectIndex==index}" @click='getProductInfo(item.id,index)'>{{item.classifyName}}</a>
+                    </li>          
                 </ul>
             </aside>
             <!-- 右边商品侧边栏 -->
-            <router-view class="view"></router-view>
+            <PreferenceInfo></PreferenceInfo>
        </div>
     </div>
 </template>
 <script>
-    import BScroll from 'better-scroll';
-    import {queryProductCategroy}  from '../../../assets/js/api.js';
+    import { queryProductCategroy,queryCartNum }  from '../../../assets/js/api.js';
+    import PreferenceInfo from './PreferenceInfo.vue'
     export default {
         data(){
             return{
-                asideList:[{id:1,name:"百果园"},
-                {id:2,name:"面包乳品"},
-                {id:3,name:"消遣零口"},
-                {id:4,name:"生活便利"},
-                {id:5,name:"酒品饮料"},
-                {id:6,name:"名品特惠"},
-                {id:7,name:"滋养茗茶"},
-                {id:8,name:"爱车养护"},
-                {id:9,name:"港澳旅行"},
-                {id:10,name:"中秋特辑"},
-                ] 
+                asideList:[] ,
+                cartNum:"",
+                token:"",
+                userId:"",
+                projectId:"",
+                selectIndex:1
             }
         },
         beforeCreate () {
-            
-        },
+   
+            },
         created () {
-            if(this.$route.path=='/preference'&&this.asideList.length!==0){       
-                this.$router.replace({name:'PreferenceInfo',params: { id: this.asideList[0].id }});   
-            }
-            // this.getProductCategroy();
+               this.token = localStorage.getItem('token');
+               this.projectId = localStorage.getItem('projectId');
+               this.userId = localStorage.getItem('userId');
+               this.getProductCategroy();
+               this.getCartNum();
         },
-        mounted(){
-            this.$nextTick(function(){
-            new BScroll('.wrapper1',{
-                    scrollY: true,
-                    click: true
-                })
-            })
+        beforeDestroy(){
+        },
+        destroyed(){
         },
         methods:{
-        goAndroid(){
-            window.WebViewJavascriptBridge.callHandler(
-                    'backNative',//data发送给native
-                    // function(responseData) {//接收onCallBack回传回来的数据
-                    //     document.getElementById("show").innerHTML = responseData;
-                    // }
-                );
-        },
-            getProductCategroy(){
-                queryProductCategroy({params:{token:"3bcc5433-523b-4c77-887d-755443540a0d",
-                    ByProductCategroy:"8527c7ca-0a89-11e5-b693-000c29a11092"     
-                } 
-                }
-                    ).then(Response=>{
-                switch(Response.code){
-                    case '000':
-                    this.asideList = Response.data;
-                    break;
-                }
+            goAndroid(){
+                window.WebViewJavascriptBridge.callHandler(
+                        'backNative',//data发送给native
+                        // function(responseData) {//接收onCallBack回传回来的数据
+                        //     document.getElementById("show").innerHTML = responseData;
+                        // }
+                    );
+            },
+            getProductCategroy(){ //获取分类列表
+                queryProductCategroy({params:{token:this.token,
+                    projectId:this.projectId,
+                    busCode:"BSC0001",
+                    } 
+                 }
+                ).then(Response=>{
+                    switch(Response.code){
+                        case '000':
+                        this.asideList = Response.data[0].busProductClassifyBean;
+                        localStorage.removeItem('businessID');
+                        localStorage.setItem('businessID',Response.data[0].id);
+                        this.selectIndex = 0;
+                        break;
+                    }
                 })
-            }
-        }    
+            },
+            getCartNum(){ //获取购物车数量
+                queryCartNum(
+                    {params:{token:this.token,
+                        userId:this.userId
+                    } 
+                 }
+                ).then(Response=>{
+                    switch(Response.code){
+                        case '000':
+                        this.cartNum = Response.data
+                        break;
+                    }
+                })  
+            },
+            getProductInfo(id,index){ //获取分类列表的详情
+                this.selectIndex = index;
+            },
+            goCart(){
+                this.$router.push({name:"Cart"});
+            } 
+        },
+        components:{
+            PreferenceInfo
+        }
     }
 </script>
 <style lang="scss" scoped>
@@ -162,7 +180,7 @@
                         color:#888888 ;
                         width: 100%;
                         height: 100%;
-                        &.router-link-active{
+                        &.active{
                             border-bottom:none;
                             color: #FF5656;
                             background-color: #fff;

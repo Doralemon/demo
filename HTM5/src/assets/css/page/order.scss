@@ -2,8 +2,18 @@
 body{
     background-color: #f5f5f5!important;
 }
+//全部订单
 .allOrder{
-    padding-top:p2r(88) ;
+    padding-top:p2r(88+70) ;
+    .nav{
+        background: #fff;
+        margin-bottom: p2r(16);
+        position: fixed;
+        top:p2r(88);
+        left:0;
+        right: 0;
+        z-index: 300;
+    }
     .mint-tab-item-label{
         color:#888888 ;
         font-size: 15px;
@@ -25,4 +35,97 @@ body{
     .mint-cell-wrapper,.nav{
         padding: 0 p2r(30);
     }
+}
+
+//订单详情
+.orderDetail{
+    padding-top:p2r(88);
+    div{
+        background: #fff;
+    }
+    
+    //下单信息
+    .orderInfo{
+        margin-bottom: p2r(18);
+        
+    }
+    .orderInfo >div{
+        padding:p2r(30);
+    }
+    .orderInfo >div:first-child{
+        padding: 0 p2r(30);
+    }
+     .orderInfo >div:first-child >div{
+         border-bottom: 1px solid #F1F1F1;
+        padding: p2r(30) 0;
+     }
+     .orderInfo >div:first-child >div >div:last-child{
+         margin-bottom: 0;
+     }
+     .orderInfo .item{
+         line-height: p2r(44);
+         margin-bottom:p2r(22) ;
+         color: #333333;
+         font-size: 15px;
+     }
+     .orderInfo .item span:last-child{
+        color: #666666;
+     }
+     .orderInfo .item >span{
+         display: inline-block;
+         vertical-align: top;
+     }
+     .orderInfo .item >span:first-child{
+         width: p2r(150);
+         margin-right: p2r(20);
+     }
+     .orderInfo .item >span:last-child{
+         width:calc(100% - #{p2r(180)}) ;
+     }
+     
+     //订单进度
+     .orderRate{
+         padding: p2r(30);
+         div{
+             position: relative;
+         }
+         .rateInfo >p{font-size: 15px;color: #333333;line-height:p2r(44);}
+         .rateInfo{margin-bottom: p2r(10);}
+         .time{font-size: 13px;color: #666666;line-height: p2r(36);}
+        .content{padding-left: p2r(70);padding-bottom: p2r(40);}
+        .line{
+            z-index: 1;
+            position: absolute;
+            left: p2r(18);
+            height: 100%;
+            top:p2r(14);
+            width: 0;
+            border-left: p2r(4) solid #D2D2D2;
+        }
+        .range {
+            position: absolute;
+            z-index: 2;
+            left: p2r(10);
+            top:p2r(14);
+            width: p2r(20);
+            height: p2r(20);
+            border-radius: 50%;
+            background: #D2D2D2;
+        }
+        .current{
+            background:#FF5656!important;
+            &::before{
+                position:absolute;
+                top:p2r(-10);
+                left:p2r(-10);
+                border-radius: 50%;
+                content: "";
+                @include size(40,40);
+                background: rgba(255,86,86,0.40);
+            }
+        }
+        &>div:last-child .content{
+            padding-bottom:0 ;
+        }
+     }
 }

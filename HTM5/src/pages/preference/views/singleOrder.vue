@@ -1,6 +1,6 @@
 <template>
         <div class="singleOrder">
-            <header></header>
+            <Head :titleName="title"></Head>
            <div class="singleOrder-center">
                <div class="buyer-name iconfont icon-zhankai" @click="goAddress">
                     <p class="span-title">收货人信息</p>
@@ -30,7 +30,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="quan-box">
+                    <div class="quan-box" @click="goQuanCode">
                         <div class="clearfix quan-box-top">
                             <p class="fl span-title">优惠券/优惠码</p>
                             <p class="fr iconfont icon-zhankai p-right">无可用优惠券</p>
@@ -79,9 +79,11 @@
 </template>
 <script>
     import { Toast } from 'mint-ui';
+    import Head from '../../../components/head.vue'
     export default {
         data(){
             return{ 
+                title:"确认订单",
                 address:"广东省深圳市",
                 textarea:"",
             }
@@ -96,6 +98,9 @@
             
         },
         methods:{
+            goQuanCode(){
+                this.$router.push({name:"CouponCode"})
+            },
            confirm(){
                if(!this.address){
                    Toast({
@@ -111,7 +116,7 @@
            }
         },
         components:{
-            
+            Head
         }
     }
 </script>

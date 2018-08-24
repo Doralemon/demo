@@ -8,15 +8,21 @@ import '../../assets/font/iconfont.css'
 import '../../assets/font/iconfont.js'
 import 'mint-ui/lib/style.css'
 import '../../assets/css/common.css'
+import headers from "../../components/head.vue"
 import '../../assets/css/index.scss'
-import {   Rate, Badge } from 'element-ui'
-import VueSwiper from 'vue-awesome-swiper'
+import {   Button, Upload ,Dialog } from 'element-ui'
+// import VueSwiper from 'vue-awesome-swiper'
 import router from "./router/index.js"
-import 'swiper/dist/css/swiper.css'
-Vue.use(Rate)
-Vue.use(Badge)
+// import 'swiper/dist/css/swiper.css'
+//Vue.use(Rate)
+//Vue.use(Badge)
 Vue.use(MintUI)
-Vue.use(VueSwiper)
+// Vue.use(VueSwiper)
+Vue.use(Button)
+Vue.use(Upload)
+Vue.use(Dialog)
+
+Vue.component("headers",headers)
 
 /* eslint-disable no-new */
 new Vue({

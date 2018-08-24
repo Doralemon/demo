@@ -3,6 +3,8 @@ module.exports = {
     entry:{ 
         preference:  ['babel-polyfill','./src/pages/preference/index.js'],
         park:  ['babel-polyfill','./src/pages/park/index.js'],
+        mycard:  ['babel-polyfill','./src/pages/mycard/index.js'],
+        order:  ['babel-polyfill','./src/pages/order/index.js'],
     },
     webside:'/'
 }

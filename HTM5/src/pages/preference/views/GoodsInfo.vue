@@ -5,15 +5,15 @@
             <!-- 返回 -->
             <div class="goBack iconfont icon-fanhuiicon" @click="goBack"></div>
             <!-- tab -->
-            <div class="title">
-                <router-link :to="{name:'Goods'}" class="pre-goods">商品</router-link>
-                <router-link :to="{name:'GoodsImg'}" class="pre-info">详情</router-link>                
+            <div class="title" v-if="this.$route.params.goodsId">
+                <router-link :to="{name:'Goods',params:{id:this.$route.params.id,goodsId:this.$route.params.goodsId}}" class="pre-goods">商品</router-link>
+                <router-link :to="{name:'GoodsImg',params:{id:this.$route.params.id,goodsId:this.$route.params.goodsId}}" class="pre-info">详情</router-link>                
             </div>
            <!-- 喜欢 -->
             <div class="like iconfont" @click="like" :class="this.isLike?'icon-xihuanyidianji':'icon-xihuanweidianji'"></div>
             <!-- 购物车 -->
             <div class="cart">
-                 <el-badge :value="12" :max="99" class="item">
+                <el-badge :value="cartNum" :max="99" class="item">
                     <div class="iconfont icon-gouwucheicon"></div>
                 </el-badge>
             </div>
@@ -66,27 +66,66 @@
 <script>
 import commonBtn from '../../../components/commonBtn.vue';
 import { Toast } from 'mint-ui';
+import { queryCartNum,queryProductDes }  from '../../../assets/js/api.js';
     export default {
         data(){
             return{
+                cartNum:"",
                 popupVisible:false, //控制购买弹框
                 isLike:false,//是否喜欢
                 buyList:{gui:1},//商品信息
                 text:"请选择规格",
                 isToast:false,//是否显示toast
                 isBuy:false,//是否是购买按钮
+                token:'',
+                userId:'',
+                productId:"",
+                goodsDesObj:{}
             }
         },
         beforeCreate () {
                 
         },
         created () { 
-         
+            console.log(124)
+           this.token = localStorage.getItem('token');
+           this.userId = localStorage.getItem('userId');
+            this.productId = this.$route.params.goodsId;
+           this.getCartNum();
+           this.getGoodsInfoProduct();
         },
         mounted(){
         
         },
         methods:{
+             getCartNum(){ //获取购物车数量
+                queryCartNum(
+                    {params:{token:this.token,
+                        userId:this.userId
+                    } 
+                 }
+                ).then(Response=>{
+                    switch(Response.code){
+                        case '000':
+                        this.cartNum = Response.data
+                        break;
+                    }
+                })  
+            },
+             getGoodsInfoProduct(){ //获取商品详情信息
+                queryProductDes(
+                    {params:{token:this.token,
+                        productId:this.productId
+                    } 
+                 }
+                ).then(Response=>{
+                    switch(Response.code){
+                        case '000':
+                        this.goodsDesObj = Response.data;
+                        break;
+                    }
+                })
+            },
             goBack(){ //后退
                 this.$router.push({name:'PreferenceInfo'});
             },

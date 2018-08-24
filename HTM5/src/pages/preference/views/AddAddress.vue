@@ -1,6 +1,6 @@
 <template>
         <div class="add-address common-bg">
-           <header></header>
+           <Head :titleName="title"></Head>
            <div class="add-address-center">
                <div class="tongxunlu-box">
                     <mt-field label="收货人" placeholder="请输入收货人姓名" v-model="username" class="shouhuoren"></mt-field>
@@ -26,9 +26,11 @@
 </template>
 <script>
     import { Toast } from 'mint-ui';
+    import Head from '../../../components/head.vue'
     export default {
         data(){
             return{ 
+                title:"",
                 username:"",
                 phone:"",
                 address:"",
@@ -58,10 +60,15 @@
                 
         },
         created () { 
-            
+            if(this.$route.params.type=="add"){
+                    this.title = "新增地址"
+                }else{
+                    this.title = "编辑地址"
+                }
         },
         mounted(){
             
+           
         },
         // deactivated() {
         //     this.$destroy()
@@ -83,8 +90,18 @@
                }
            }
         },
-        components:{
+        watch:{
+            $route(to,from){
+                if(to.params.type=="add"){
+                    this.title = "新增地址"
+                }else{
+                    this.title = "编辑地址"
+                }
+            }
+            },
             
+        components:{
+            Head
         }
     }
 </script>

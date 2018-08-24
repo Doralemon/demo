@@ -1,9 +1,7 @@
 <template>
    <div class="app">
        <transition :name="transitionName">
-            <keep-alive>
-                <router-view></router-view>
-            </keep-alive>
+            <router-view></router-view>
         </transition>
    </div>
 </template>
@@ -42,6 +40,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    .app{
+        font-size: 14px;
+    }
     .slide-right-enter-active,
     .slide-right-leave-active,
     .slide-left-enter-active,

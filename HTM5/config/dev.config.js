@@ -6,6 +6,8 @@ module.exports = {
         //入口命名规范2： 入口文件对应的html模板都应该以index.html命名，比如carespay入口文件对应的html路径  /src/pages/carespay/index.html
         preference: ['babel-polyfill','./src/pages/preference/index.js'],
         park: ['babel-polyfill','./src/pages/park/index.js'],
+        mycard: ['babel-polyfill','./src/pages/mycard/index.js'],
+        order: ['babel-polyfill','./src/pages/order/index.js'],
     },
     webside:'/'
 }
